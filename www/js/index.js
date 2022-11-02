@@ -27,3 +27,10 @@ function onDeviceReady() {
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     document.getElementById('deviceready').classList.add('ready');
 }
+
+console.log('COUCOU');
+screen.orientation.onchange = function(){
+    console.log(screen.orientation.type);
+    document.getElementById('color').style.backgroundColor = 'blue';    
+    navigator.vibrate(1000);
+};
