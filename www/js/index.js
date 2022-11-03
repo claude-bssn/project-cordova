@@ -26,4 +26,43 @@ function onDeviceReady() {
 
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     document.getElementById('deviceready').classList.add('ready');
+    
 }
+
+screen.orientation.onchange = function(){
+    console.log(screen.orientation.type);
+    if (screen.orientation.type == "landscape-primary") {
+        playAudio(getMedia());
+        navigator.vibrate(1000);
+    }
+}
+
+function getMedia() {
+    return cordova.file.applicationDirectory + 'www/sounds/' + randTrack() + '.mp3';
+}
+
+function randTrack() {
+    return Math.floor(Math.random() * 11)
+}
+
+// Play audio
+//
+function playAudio(url) {
+    // Play the audio file at url
+    var my_media = new Media(url,
+        // success callback
+        function () {
+            console.log("playAudio():Audio Success");
+        },
+        // error callback
+        function (err) {
+            console.log("playAudio():Audio Error: " + err);
+        }
+    );
+    // Play audio
+    my_media.setVolume('1.0');
+    my_media.play();
+}
+
+
+
