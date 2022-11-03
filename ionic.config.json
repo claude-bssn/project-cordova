@@ -1,0 +1,7 @@
+{
+  "name": "Oraculus",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
